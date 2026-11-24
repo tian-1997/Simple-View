@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+docs/preview/*.png.bak
+
+# 打包产物（build.bat 生成）
+dist/
+build/
+*.spec.bak

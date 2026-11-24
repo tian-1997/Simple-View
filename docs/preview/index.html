@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>WinIsland · 玻璃质感界面 v1.0</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 44px 32px 80px;
+    background: #f4f5f8;
+    color: #1a1d24;
+    font-family: "Microsoft YaHei UI", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; }
+
+  .eyebrow { font-size: 12px; letter-spacing: 2px; color: #8a90a0; margin-bottom: 10px; }
+  h1 { font-size: 28px; margin: 0 0 10px; letter-spacing: -0.3px; }
+  .lede { font-size: 13.5px; color: #5d6473; line-height: 1.75; margin: 0; max-width: 780px; }
+  .lede b { color: #1a1d24; }
+  .meta { font-size: 12px; color: #9aa0ae; margin-top: 14px; }
+  .meta code { font-family: Consolas, monospace; }
+
+  h2 {
+    font-size: 13px; letter-spacing: 1.4px; color: #6b7280;
+    margin: 54px 0 4px; font-weight: 600;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  h2 span { font-size: 11.5px; letter-spacing: 0; color: #a2a8b6; font-weight: 400; }
+  .sub { font-size: 12.5px; color: #7b8290; line-height: 1.7; margin: 8px 0 18px; max-width: 780px; }
+
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; align-items: start; }
+
+  figure { margin: 0; }
+  figure img {
+    display: block; width: 100%; height: auto;
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(16,24,40,.08), 0 14px 34px -20px rgba(16,24,40,.45);
+  }
+  figcaption { margin-top: 11px; font-size: 12px; color: #6b7280; line-height: 1.65; }
+  figcaption b { color: #2b3038; font-weight: 600; display: block; font-size: 12.5px; margin-bottom: 3px; }
+
+  .specs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 16px; }
+  .spec-card {
+    background: #fff; border-radius: 14px; padding: 20px 22px;
+    box-shadow: 0 1px 2px rgba(16,24,40,.05), 0 10px 28px -18px rgba(16,24,40,.2);
+  }
+  .spec-card h3 { font-size: 12px; letter-spacing: 1.2px; color: #8a90a0; margin: 0 0 14px; font-weight: 600; }
+  .swatches { display: flex; flex-direction: column; gap: 9px; }
+  .sw { display: flex; align-items: center; gap: 9px; font-size: 11.5px; color: #4b5260; }
+  .sw i { width: 18px; height: 18px; border-radius: 6px; flex: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+  .sw code { font-family: Consolas, monospace; font-size: 10.5px; color: #9aa0ae; margin-left: auto; }
+  .rows { display: grid; gap: 9px; font-size: 12px; color: #4b5260; }
+  .rows div { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px dashed #eceef3; padding-bottom: 7px; }
+  .rows div:last-child { border: 0; padding-bottom: 0; }
+  .rows b { font-weight: 600; color: #1a1d24; white-space: nowrap; }
+
+  .note {
+    margin-top: 44px; padding: 18px 22px; border-radius: 12px;
+    background: #eef2fb; color: #3b4a6b; font-size: 12.5px; line-height: 1.8;
+    border-left: 3px solid #4e7cff;
+  }
+  .note b { color: #22304d; }
+  .note ul { margin: 8px 0 0; padding-left: 18px; }
+  .note li { margin-bottom: 4px; }
+
+  @media (max-width: 880px) {
+    .grid3, .grid2, .specs { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">WinIsland · 玻璃质感 v1.0</div>
+  <h1>Windows 灵动岛 · 界面定稿</h1>
+  <p class="lede">
+    盯 Codex / pi / WorkBuddy 的会话状态，以及微信、飞书、企业微信的通知。
+    下面全部是 <b>PySide6 + QML 真实渲染</b>的截图（尺寸即运行尺寸），玻璃是<b>自绘真实背景模糊</b>，不是贴图。
+  </p>
+  <div class="meta">2026-11-24 · 收起 40px 高 / 展开 528px 高，两种状态<b>同为 240px 宽</b> · 深/浅双主题</div>
+
+  <h2>收起态 <span>常驻顶部中央，不抢焦点、不进任务栏</span></h2>
+  <p class="sub">左侧<b>有几个 agent 有会话就摆几个 logo</b>（同一个 agent 多个会话只算一个），每个 logo 外面套一圈状态描边；右侧铃铛挂未读数。胶囊宽度固定 240px、和展开态完全一致，所以展开时它<b>不会横向拉伸</b>。胶囊本身是一块玻璃：背后的壁纸和窗口被真实模糊后透过它。</p>
+  <div class="grid3">
+    <figure>
+      <img src="pill_dark.png" alt="深色 · 运行中">
+      <figcaption><b>深色 · 三个 agent</b>π 紫环（推理中）、OpenAI 蓝环（执行工具）、WorkBuddy 绿环（已完成），顺序按状态紧急度排。文字走系统灰度抗锯齿，透明窗上不会出现彩色描边。</figcaption>
+    </figure>
+    <figure>
+      <img src="pill_light.png" alt="浅色 · 运行中">
+      <figcaption><b>浅色 · 三个 agent</b>冷白磨砂，黑字压在上面；同一套布局与状态色，只换 token 与 tint。</figcaption>
+    </figure>
+    <figure>
+      <img src="pill_idle.png" alt="浅色 · 空闲">
+      <figcaption><b>全部空闲</b>logo 整体压暗、不挂彩环，外圈回到普通 1px 描边，不制造视觉噪音。</figcaption>
+    </figure>
+  </div>
+
+  <h2>边框跟着状态走 <span>进行中呼吸，完成常亮</span></h2>
+  <p class="sub">胶囊外圈取「最该被看见」的那个状态；每个 logo 外面的那圈细描边是它自己的状态。渐变描边是「外层渐变圆角矩形 + 内缩 1.5px 的玻璃」拼出来的：Qt 的 Rectangle 边框只支持单色，Shape 也没有渐变描边。</p>
+  <div class="grid2">
+    <figure>
+      <img src="pill_think.png" alt="推理中">
+      <figcaption><b>推理中 · 紫色渐变</b>1.3s 一上一下缓慢呼吸，不抢注意力但能看出「还在想」。左边是 pi 的图标，外面那圈同色细环表示它自己的状态。</figcaption>
+    </figure>
+    <figure>
+      <img src="pill_done.png" alt="已完成">
+      <figcaption><b>已完成 · 绿色渐变常亮</b>WorkBuddy 跑完了，边框转绿不再闪；文案同步变成「已完成」。</figcaption>
+    </figure>
+  </div>
+
+  <h2>展开态 <span>点击胶囊展开，宽度不变、只向下长高度</span></h2>
+  <p class="sub">因为和胶囊同宽（240px），面板用三行紧凑排版：agent 名 + 状态 chip / 会话名 / 项目 · 动作 + 耗时。下区是消息通知，没有消息时整段自动收起，不留空槽。</p>
+  <div class="grid2">
+    <figure>
+      <img src="panel_dark.png" alt="深色面板">
+      <figcaption><b>深色玻璃</b>66% 深蓝黑着色 + 0.74 模糊，壁纸只剩一层柔和光影；白字对比度稳定在 7:1 以上。</figcaption>
+    </figure>
+    <figure>
+      <img src="panel_light.png" alt="浅色面板">
+      <figcaption><b>浅色磨砂</b>70% 冷白着色，背景压到只留色相；黑字与浅灰正文都够读。</figcaption>
+    </figure>
+  </div>
+
+  <h2>告警与真实数据 <span>等确认时整块玻璃转琥珀边</span></h2>
+  <div class="grid2">
+    <figure>
+      <img src="panel_alert.png" alt="等确认">
+      <figcaption><b>等你确认</b>哪一行在等人，整行染琥珀 + 外框转琥珀色——<code>需要批准 · rm -rf build/</code> 这种就是值得抬头看一眼的时刻。</figcaption>
+    </figure>
+    <figure>
+      <img src="live_real.png" alt="真实数据">
+      <figcaption><b>真实数据</b>这张是跑本机日志渲出来的：WorkBuddy 当前会话、项目名、已运行 10 分钟。没有 IM 通知时消息区自动隐藏。</figcaption>
+    </figure>
+  </div>
+
+  <h2>设计规格 <span>全部来自 app/tokens.py，QML 不写死色值</span></h2>
+  <div class="specs">
+    <div class="spec-card">
+      <h3>语义状态色</h3>
+      <div class="swatches">
+        <div class="sw"><i style="background:#3988F5"></i>执行工具<code>#3988F5</code></div>
+        <div class="sw"><i style="background:#A78BFA"></i>推理中<code>#A78BFA</code></div>
+        <div class="sw"><i style="background:#E5A13A"></i>等确认<code>#E5A13A</code></div>
+        <div class="sw"><i style="background:#8993A1"></i>已完成 / 空闲<code>#8993A1</code></div>
+        <div class="sw"><i style="background:#E45858"></i>出错<code>#E45858</code></div>
+        <div class="sw"><i style="background:#07C160"></i>微信<code>#07C160</code></div>
+        <div class="sw"><i style="background:#3370FF"></i>飞书<code>#3370FF</code></div>
+        <div class="sw"><i style="background:#0082EF"></i>企微<code>#0082EF</code></div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <h3>尺寸</h3>
+      <div class="rows">
+        <div><span>胶囊高度 / 圆角</span><b>40px / 20px 全圆</b></div>
+        <div><span>胶囊宽度</span><b>240px 固定（与面板一致）</b></div>
+        <div><span>面板宽度 / 圆角</span><b>240px / 20px</b></div>
+        <div><span>会话行 / 消息行</span><b>60px / 56px</b></div>
+        <div><span>字号阶梯</span><b>15 · 13 · 12 · 11 · 10 · 9</b></div>
+        <div><span>动效</span><b>展开 220ms OutCubic</b></div>
+      </div>
+    </div>
+    <div class="spec-card">
+      <h3>玻璃配方</h3>
+      <div class="rows">
+        <div><span>背景来源</span><b>抓屏（排除自身）</b></div>
+        <div><span>降采样</span><b>1/6 再拉回</b></div>
+        <div><span>模糊</span><b>MultiEffect 0.74 / 0.82</b></div>
+        <div><span>着色 · 深</span><b>#A80A0D13</b></div>
+        <div><span>着色 · 浅</span><b>#B4F6F8FB</b></div>
+        <div><span>描边 / 高光</span><b>1px 白 11% / 顶部 17%</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>为什么不直接用系统 acrylic：</b>DWM 的模糊层由系统合成，<b>不受 SetWindowRgn 约束</b>——
+    胶囊是圆角时，模糊底会是一个方角矩形从圆角外面露出来（已实测复现）。
+    所以改成自己抓窗口背后的屏幕（用 <code>WDA_EXCLUDEFROMCAPTURE</code> 把自身排除，避免自我反馈），
+    降采样后在 QML 里做高斯模糊 + 圆角遮罩，圆角和模糊都能精确控制。
+    <ul>
+      <li>已知限制：飞书是 CEF 外壳，UIA 树到 <code>BrowserUserView</code> 就断，<b>正文抓不到</b>，目前只能报「有新消息」。企微待现场验证。</li>
+      <li>背景每 2.5 秒刷新一次，静止时几乎没有开销；移动或展开时按尺寸重抓。</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "assets": [
+    {
+      "id": "winisland-logo",
+      "product": "WinIsland",
+      "category": "branding",
+      "file_path": "assets/branding/",
+      "source_url": "",
+      "source_type": "project-owned",
+      "license": "project-owned",
+      "attribution_required": false,
+      "official_asset": true,
+      "downloaded_at": "",
+      "format": "svg",
+      "notes": "Replace with approved WinIsland brand mark."
+    },
+    {
+      "id": "codex-logo",
+      "product": "Codex",
+      "category": "agent",
+      "file_path": "assets/agents/",
+      "source_url": "",
+      "source_type": "",
+      "license": "",
+      "attribution_required": null,
+      "official_asset": null,
+      "downloaded_at": "",
+      "format": "",
+      "notes": "Verify official source and redistribution terms before bundling."
+    },
+    {
+      "id": "wechat-logo",
+      "product": "WeChat",
+      "category": "messaging",
+      "file_path": "assets/messaging/",
+      "source_url": "",
+      "source_type": "",
+      "license": "",
+      "attribution_required": null,
+      "official_asset": null,
+      "downloaded_at": "",
+      "format": "",
+      "notes": "Verify official source and redistribution terms before bundling."
+    }
+  ]
+}
